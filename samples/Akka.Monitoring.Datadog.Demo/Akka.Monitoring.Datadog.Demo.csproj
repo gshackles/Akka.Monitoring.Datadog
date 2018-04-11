@@ -41,8 +41,8 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="StatsdClient, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f641b6aa3c3157d1, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DogStatsD-CSharp-Client.2.1.1\lib\net35\StatsdClient.dll</HintPath>
+    <Reference Include="StatsdClient, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DogStatsD-CSharp-Client.3.1.0\lib\net451\StatsdClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
