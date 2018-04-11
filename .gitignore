@@ -221,3 +221,5 @@ packages/
 testapps/
 
 *.nupkg
+
+.vs
