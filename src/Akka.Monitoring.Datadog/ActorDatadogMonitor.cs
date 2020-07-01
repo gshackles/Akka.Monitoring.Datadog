@@ -12,22 +12,21 @@ namespace Akka.Monitoring.Datadog
 
 		private readonly ConcurrentDictionary<string, string> _metricNames = new ConcurrentDictionary<string, string>();
 		private readonly ConcurrentDictionary<string, string[]> _tags = new ConcurrentDictionary<string, string[]>();
+        private readonly DogStatsdService _dogStatsdService = new DogStatsdService();
 
-		public ActorDatadogMonitor(StatsdConfig config)
-        {
-            DogStatsd.Configure(config);
-        }
+        public ActorDatadogMonitor(StatsdConfig config) => 
+            _dogStatsdService.Configure(config);
 
         public override int MonitoringClientId => MonitorName.GetHashCode();
 
         public override void UpdateCounter(string metricName, int delta, double sampleRate) =>
-            DogStatsd.Increment(GetDatadogMetricName(metricName), delta, sampleRate, GetDatadogTags(metricName));
+            _dogStatsdService.Increment(GetDatadogMetricName(metricName), delta, sampleRate, GetDatadogTags(metricName));
 
         public override void UpdateGauge(string metricName, int value, double sampleRate) =>
-			DogStatsd.Gauge(GetDatadogMetricName(metricName), value, sampleRate, GetDatadogTags(metricName));
+            _dogStatsdService.Gauge(GetDatadogMetricName(metricName), value, sampleRate, GetDatadogTags(metricName));
 
         public override void UpdateTiming(string metricName, long time, double sampleRate) =>
-			DogStatsd.Timer(GetDatadogMetricName(metricName), time, sampleRate, GetDatadogTags(metricName));
+            _dogStatsdService.Timer(GetDatadogMetricName(metricName), time, sampleRate, GetDatadogTags(metricName));
 
 		internal string GetDatadogMetricName(string akkaMetricName) =>
             _metricNames.GetOrAdd(akkaMetricName ?? "", _ =>
