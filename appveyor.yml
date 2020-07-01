@@ -1,29 +1,13 @@
 version: 1.0.0.{build}
+image: Previous Visual Studio 2019
+build_script:
+- cmd: >-
+    dotnet build --configuration Release Akka.Monitoring.Datadog.sln
 
-configuration: Release
-
-assembly_info:
-  patch: true
-  file: AssemblyInfo.*
-  assembly_version: "{version}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: "{version}"
-
-nuget:
-  disable_publish_on_pr: true
-
-before_build:
-  - nuget restore
-
-build:
-  publish_nuget: true
-  publish_nuget_symbols: true
-  verbosity: minimal
-
-deploy:
-  provider: NuGet
-  api_key:
-    secure: YpS2gFZpa7q+FpKeHrUL1G/X71IlTmN67f7ht4Eq0SGIekGUWt1TrDnbJfgIbE24
-  skip_symbols: false
-  symbol_server:
-  artifact: /.*\.nupkg/
+    dotnet pack --configuration Release ./src/Akka.Monitoring.Datadog/Akka.Monitoring.Datadog.csproj
+test_script:
+- cmd: dotnet test
+artifacts:
+- path: ./src/Akka.Monitoring.Datadog/bin/Release/*.nupkg
+on_success:
+- cmd: dotnet pack ./src/Akka.Monitoring.Datadog/Akka.Monitoring.Datadog.csproj
