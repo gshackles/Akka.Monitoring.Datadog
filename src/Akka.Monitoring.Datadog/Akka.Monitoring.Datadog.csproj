@@ -1,56 +1,29 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AFCE9761-57F9-4781-B445-C06F81BBB151}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Akka.Monitoring.Datadog</RootNamespace>
-    <AssemblyName>Akka.Monitoring.Datadog</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyTitle>Akka.Monitoring.Datadog</AssemblyTitle>
+    <Description>Akka.Monitoring extension for reporting to Datadog</Description>
+    <Copyright>Copyright 2020 Greg Shackles</Copyright>
+    <Version>1.0.0.0</Version>
+    <ConsolePause>false</ConsolePause>
+    <Authors>gshackles</Authors>
+    <PackageId>Akka.Monitoring.Datadog</PackageId>
+    <PackageLicenseUrl>https://github.com/gshackles/Akka.Monitoring.Datadog/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/gshackles/Akka.Monitoring.Datadog</PackageProjectUrl>
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageTags>akka actors actor model Akka concurrency monitoring statsd datadog</PackageTags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Akka, Version=1.1.3.31, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Akka.1.1.3\lib\net45\Akka.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="StatsdClient, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\DogStatsD-CSharp-Client.3.1.0\lib\net451\StatsdClient.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="Akka.Monitoring">
-      <HintPath>..\..\packages\Akka.Monitoring.0.5.3\lib\net45\Akka.Monitoring.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Akka" Version="[1.3.12, 2.0)" />
+    <PackageReference Include="Akka.Monitoring" Version="[0.7.0, 1.0)" />
+    <PackageReference Include="DogStatsD-CSharp-Client" Version="[5.0.2, 6.0)" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ActorDatadogMonitor.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
