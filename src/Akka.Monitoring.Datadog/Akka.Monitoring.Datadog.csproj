@@ -8,7 +8,7 @@
     <ConsolePause>false</ConsolePause>
     <Authors>gshackles</Authors>
     <PackageId>Akka.Monitoring.Datadog</PackageId>
-    <PackageLicenseUrl>https://github.com/gshackles/Akka.Monitoring.Datadog/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/gshackles/Akka.Monitoring.Datadog/blob/main/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/gshackles/Akka.Monitoring.Datadog</PackageProjectUrl>
     <PackageReleaseNotes>Initial release</PackageReleaseNotes>
     <PackageTags>akka actors actor model Akka concurrency monitoring statsd datadog</PackageTags>
