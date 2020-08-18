@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build
+      run: dotnet build --configuration Release Akka.Monitoring.Datadog.sln
+    
+    - name: Run tests
+      run: dotnet test
+    
+    - name: Create package
+      run: dotnet pack --configuration Release ./src/Akka.Monitoring.Datadog/Akka.Monitoring.Datadog.csproj
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2.1.4
+      with:
+        path: ./src/Akka.Monitoring.Datadog/bin/Release/*.nupkg
