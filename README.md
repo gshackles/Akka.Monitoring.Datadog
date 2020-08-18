@@ -1,6 +1,6 @@
 # Akka.Monitoring.Datadog
 
-[![Build status](https://ci.appveyor.com/api/projects/status/2sgqdmsrpbka330v?svg=true)](https://ci.appveyor.com/project/gshackles/akka-monitoring-datadog)
+![Build Status](https://github.com/gshackles/Akka.Monitoring.Datadog/workflows/CI/badge.svg)
 
 This is a plugin for [Akka.Monitoring](https://github.com/petabridge/akka-monitoring) that reports metrics into [Datadog](https://datadoghq.com).
 
