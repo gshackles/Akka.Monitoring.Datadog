@@ -4,21 +4,33 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        include:
+        - os: ubuntu-latest
+          DOTNET_ARGS: --configuration Release --framework netcoreapp3.1
+
+        - os: windows-latest
+          DOTNET_ARGS: --configuration Release
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Build
-      run: dotnet build --configuration Release Akka.Monitoring.Datadog.sln
+      run: dotnet build ${{ matrix.DOTNET_ARGS }} Akka.Monitoring.Datadog.sln
     
     - name: Run tests
-      run: dotnet test
+      run: dotnet test ${{ matrix.DOTNET_ARGS }}
     
     - name: Create package
-      run: dotnet pack --configuration Release ./src/Akka.Monitoring.Datadog/Akka.Monitoring.Datadog.csproj
+      run: dotnet pack ${{ matrix.DOTNET_ARGS }} ./src/Akka.Monitoring.Datadog/Akka.Monitoring.Datadog.csproj
+      if: ${{ matrix.os == 'windows-latest' }}
     
     - name: Upload artifact
       uses: actions/upload-artifact@v2.1.4
+      if: ${{ matrix.os == 'windows-latest' }}
       with:
         path: ./src/Akka.Monitoring.Datadog/bin/Release/*.nupkg
