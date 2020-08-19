@@ -1,12 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFrameworks>net48;netcoreapp3.1</TargetFrameworks>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AssemblyTitle>Akka.Monitoring.Datadog.Demo</AssemblyTitle>
     <Product>Akka.Monitoring.Datadog.Demo</Product>
     <Copyright>Copyright ©  2017</Copyright>
-    <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -14,8 +13,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System.Data.DataSetExtensions" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
@@ -23,8 +21,8 @@
     <ProjectReference Include="..\..\src\Akka.Monitoring.Datadog\Akka.Monitoring.Datadog.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Akka" Version="1.3.12" />
-    <PackageReference Include="Akka.Monitoring" Version="0.7.0" />
+    <PackageReference Include="Akka" Version="1.4.9" />
+    <PackageReference Include="Akka.Monitoring" Version="0.7.0" NoWarn="NU1701" />
     <PackageReference Include="DogStatsD-CSharp-Client" Version="5.0.2" />
   </ItemGroup>
 </Project>
