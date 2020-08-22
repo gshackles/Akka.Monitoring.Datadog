@@ -5,7 +5,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AssemblyTitle>Akka.Monitoring.Datadog.Demo</AssemblyTitle>
     <Product>Akka.Monitoring.Datadog.Demo</Product>
-    <Copyright>Copyright ©  2017</Copyright>
+    <Copyright>2020 Greg Shackles</Copyright>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>

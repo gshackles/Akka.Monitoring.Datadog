@@ -3,14 +3,14 @@
     <TargetFrameworks>net48;netcoreapp3.1</TargetFrameworks>
     <AssemblyTitle>Akka.Monitoring.Datadog</AssemblyTitle>
     <Description>Akka.Monitoring extension for reporting to Datadog</Description>
-    <Copyright>Copyright 2020 Greg Shackles</Copyright>
-    <Version>1.0.0.0</Version>
+    <Copyright>2020 Greg Shackles</Copyright>
+    <Version>1.1.0.0-alpha</Version>
     <ConsolePause>false</ConsolePause>
     <Authors>gshackles</Authors>
     <PackageId>Akka.Monitoring.Datadog</PackageId>
     <PackageLicenseUrl>https://github.com/gshackles/Akka.Monitoring.Datadog/blob/main/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/gshackles/Akka.Monitoring.Datadog</PackageProjectUrl>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageReleaseNotes>Add .NET Core 3.1 support</PackageReleaseNotes>
     <PackageTags>akka actors actor model Akka concurrency monitoring statsd datadog</PackageTags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

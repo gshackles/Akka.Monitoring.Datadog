@@ -5,7 +5,7 @@ using StatsdClient;
 
 namespace Akka.Monitoring.Datadog.Demo
 {
-    class HelloActor : TypedActor, IHandle<string>
+    class HelloActor : ReceiveActor
     {
         protected override void PreStart()
         {
@@ -19,25 +19,26 @@ namespace Akka.Monitoring.Datadog.Demo
             base.PostStop();
         }
 
-        public void Handle(string message)
-        {
-            Context.IncrementMessagesReceived();
-
-            Console.WriteLine("Received: {0}", message);
-
-            if (message == "Goodbye")
+        public HelloActor() =>
+            Receive<string>(message =>
             {
-                Context.Self.Tell(PoisonPill.Instance);
-                Program.ManualResetEvent.Set(); //allow the program to exit
-            }
-            else
-            {
-                Sender.Tell("Hello!");
-            }
-        }
+                Context.IncrementMessagesReceived();
+
+                Console.WriteLine("Received: {0}", message);
+
+                if (message == "Goodbye")
+                {
+                    Context.Self.Tell(PoisonPill.Instance);
+                    Program.ManualResetEvent.Set(); //allow the program to exit
+                }
+                else
+                {
+                    Sender.Tell("Hello!");
+                }
+            });
     }
 
-    class GoodbyeActor : TypedActor, IHandle<Tuple<IActorRef, string>>, IHandle<string>
+    class GoodbyeActor : ReceiveActor
     {
         protected override void PreStart()
         {
@@ -51,21 +52,25 @@ namespace Akka.Monitoring.Datadog.Demo
             base.PostStop();
         }
 
-        public void Handle(string message)
-        {
-            Context.IncrementMessagesReceived();
+        public GoodbyeActor() =>
+            ReceiveAny(message =>
+            {
+                Context.IncrementMessagesReceived();
 
-            Console.WriteLine("Received: {0}", message);
+                switch (message)
+                {
+                    case string stringMessage:
+                        Console.WriteLine($"Received: {stringMessage}");
 
-            Sender.Tell("Goodbye");
-            Context.Self.Tell(PoisonPill.Instance);
-        }
+                        Sender.Tell("Goodbye");
+                        Context.Self.Tell(PoisonPill.Instance);
+                        break;
 
-        public void Handle(Tuple<IActorRef, string> message)
-        {
-            Context.IncrementMessagesReceived();
-            message.Item1.Tell("Starting");
-        }
+                    case IActorRef target:
+                        target.Tell("Starting");
+                        break;
+                }
+            });
     }
 
     class Program
@@ -104,7 +109,7 @@ namespace Akka.Monitoring.Datadog.Demo
             }
 
             Console.WriteLine("Starting a conversation between actors");
-            goodbye.Tell(new Tuple<IActorRef, string>(hello, "Start"));
+            goodbye.Tell(hello);
 
             while (ManualResetEvent.WaitOne())
             {
