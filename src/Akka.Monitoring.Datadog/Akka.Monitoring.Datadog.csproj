@@ -4,7 +4,7 @@
     <AssemblyTitle>Akka.Monitoring.Datadog</AssemblyTitle>
     <Description>Akka.Monitoring extension for reporting to Datadog</Description>
     <Copyright>2020 Greg Shackles</Copyright>
-    <Version>1.0.0.0</Version>
+    <Version>1.1.0.0-alpha</Version>
     <ConsolePause>false</ConsolePause>
     <Authors>gshackles</Authors>
     <PackageId>Akka.Monitoring.Datadog</PackageId>
