@@ -10,7 +10,7 @@
     <PackageId>Akka.Monitoring.Datadog</PackageId>
     <PackageLicenseUrl>https://github.com/gshackles/Akka.Monitoring.Datadog/blob/main/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/gshackles/Akka.Monitoring.Datadog</PackageProjectUrl>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageReleaseNotes>Add .NET Core 3.1 support</PackageReleaseNotes>
     <PackageTags>akka actors actor model Akka concurrency monitoring statsd datadog</PackageTags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
