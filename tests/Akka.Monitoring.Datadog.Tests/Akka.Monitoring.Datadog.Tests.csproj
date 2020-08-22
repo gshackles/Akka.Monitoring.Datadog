@@ -3,7 +3,7 @@
     <TargetFrameworks>net48;netcoreapp3.1</TargetFrameworks>
     <AssemblyTitle>Akka.Monitoring.Datadog.Tests</AssemblyTitle>
     <Description>Akka.Monitoring monitor tests for Datadog</Description>
-    <Copyright>2017 Greg Shackles</Copyright>
+    <Copyright>2020 Greg Shackles</Copyright>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
