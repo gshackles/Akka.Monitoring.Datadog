@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFrameworks>net48;netcoreapp3.1</TargetFrameworks>
     <AssemblyTitle>Akka.Monitoring.Datadog.Tests</AssemblyTitle>
     <Description>Akka.Monitoring monitor tests for Datadog</Description>
-    <Copyright>2017 Greg Shackles</Copyright>
-    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Copyright>2020 Greg Shackles</Copyright>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -12,8 +11,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System.Data.DataSetExtensions" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
@@ -21,15 +19,11 @@
     <ProjectReference Include="..\..\src\Akka.Monitoring.Datadog\Akka.Monitoring.Datadog.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Akka" Version="1.3.12" />
-    <PackageReference Include="Akka.Monitoring" Version="0.7.0" />
+    <PackageReference Include="Akka" Version="1.4.10" />
+    <PackageReference Include="Akka.Monitoring" Version="1.1.0" />
     <PackageReference Include="DogStatsD-CSharp-Client" Version="5.0.2" />
     <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="xunit.runner.console" Version="2.2.0">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.0" />
   </ItemGroup>
 </Project>

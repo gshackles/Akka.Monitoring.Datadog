@@ -13,7 +13,7 @@ jobs:
       run: dotnet build --configuration Release Akka.Monitoring.Datadog.sln
     
     - name: Run tests
-      run: dotnet test
+      run: dotnet test --configuration Release
     
     - name: Create package
       run: dotnet pack --configuration Release ./src/Akka.Monitoring.Datadog/Akka.Monitoring.Datadog.csproj
