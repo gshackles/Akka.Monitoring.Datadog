@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Akka" Version="1.4.10" />
-    <PackageReference Include="Akka.Monitoring" Version="1.1.0" NoWarn="NU1701" />
+    <PackageReference Include="Akka.Monitoring" Version="1.1.0" />
     <PackageReference Include="DogStatsD-CSharp-Client" Version="5.0.2" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
