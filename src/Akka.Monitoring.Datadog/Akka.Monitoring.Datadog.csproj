@@ -10,7 +10,7 @@
     <PackageId>Akka.Monitoring.Datadog</PackageId>
     <PackageLicenseUrl>https://github.com/gshackles/Akka.Monitoring.Datadog/blob/main/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/gshackles/Akka.Monitoring.Datadog</PackageProjectUrl>
-    <PackageReleaseNotes>Target .NET Standard 2.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Extend supported DogStatsD-CSharp-Client range to include 7.x</PackageReleaseNotes>
     <PackageTags>akka actors actor model Akka concurrency monitoring statsd datadog</PackageTags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
