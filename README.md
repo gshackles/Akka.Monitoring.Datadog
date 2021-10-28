@@ -4,8 +4,6 @@
 
 This is a plugin for [Akka.Monitoring](https://github.com/petabridge/akka-monitoring) that reports metrics into [Datadog](https://datadoghq.com).
 
-**This is very much in an experimental/preview state right now, and does not currently do too much. I have some ideas for ways to improve things further, but if you're interested please let me know how you might want Akka.Monitoring metrics reported into Datadog!**
-
 ## Usage
 
 You can check out the [sample project](https://github.com/gshackles/Akka.Monitoring.Datadog/tree/main/samples/Akka.Monitoring.Datadog.Demo) to see a quick example of the monitor in action.
